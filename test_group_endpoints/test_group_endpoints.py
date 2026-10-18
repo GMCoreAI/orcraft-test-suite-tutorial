@@ -14,6 +14,7 @@ from test_group_endpoints.test_multi_select_endpoints.test_multi_select_endpoint
 from test_group_endpoints.test_endpoint_fanout.test_endpoint_fanout import TestEndpointFanout
 from test_group_endpoints.test_endpoint_fanout_queued.test_endpoint_fanout_queued import TestEndpointFanoutQueued
 from test_group_endpoints.test_endpoint_fanout_permutations.test_endpoint_fanout_permutations import TestEndpointFanoutPermutations
+from test_group_endpoints.test_endpoint_pool.test_endpoint_pool import TestEndpointPool
 from test_group_endpoints.test_remote_thread_example.test_remote_thread_example import TestRemoteThreadExample
 from test_group_endpoints.test_type_fidelity.test_type_fidelity import TestTypeFidelity
 from test_group_endpoints.test_controlled_endpoint_disconnection.test_controlled_endpoint_disconnection import TestControlledEndpointDisconnection
@@ -25,7 +26,7 @@ class TestGroupEndpointsConfig(OrcraftTestGroupConfig):
 	description = OrcraftConfigField.Text(
 		default=(
 			"Covers endpoint-focused tests: default endpoints, package upload, file "
-			"transfer, multi-select and fan-out across endpoints, remote threads, and "
+			"transfer, multi-select and fan-out across endpoints, endpoint pools, remote threads, and "
 			"endpoint disconnection and restart handling."
 		)
 	)
@@ -37,6 +38,7 @@ class TestGroupEndpointsConfig(OrcraftTestGroupConfig):
 			TestEndpointFanout(),
 			TestEndpointFanoutQueued(),
 			TestEndpointFanoutPermutations(),
+			TestEndpointPool(),
 			TestPackageUploadParameterTypes(),
 			TestRemoteThreadExample(),
 			TestTypeFidelity(),
