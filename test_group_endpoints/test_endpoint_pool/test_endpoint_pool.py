@@ -20,7 +20,8 @@ class TestEndpointPoolConfig(OrcraftTestConfig):
 			"Uses a test endpoint as the generator and two aux endpoints as solvers, like the Multi-Select "
 			"Endpoints test, but none of the machines is named in the test: every endpoint field's default is "
 			"an endpoint pool, and the run picks the machines when it starts.\n"
-			"The test endpoint asks for any available machine whose operating system is Linux or Windows. "
+			"The test endpoint asks for any available machine running Ubuntu 24.04 or Windows 11, the operating "
+			"system named in full as the endpoint reports it. "
 			"The aux endpoints ask for any two available machines with distinct operating systems.\n"
 			"A pool's conditions are Query records: match keeps the machines whose attribute has one of the "
 			"values, distinct makes the picked machines differ on the attribute; count says how many machines "
@@ -37,7 +38,7 @@ class TestEndpointPoolConfig(OrcraftTestConfig):
 
 	test_endpoint = OrcraftConfigField.Endpoint(
 		default=OrcraftConfigField.EndpointPool(
-			OrcraftConfigField.Query.match("os", ("Linux", "Windows")),
+			OrcraftConfigField.Query.match("os", ("Ubuntu 24.04", "Windows 11")),
 		),
 		label="Test Endpoint",
 	)
