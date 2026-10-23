@@ -7,6 +7,7 @@ from orcraft import (
 	OrcraftConfigField,
 )
 
+from test_group_endpoints.test_hello_endpoint.test_hello_endpoint import TestHelloEndpoint
 from test_group_endpoints.test_default_endpoint_and_package_upload.test_default_endpoint_and_package_upload import TestDefaultEndpointAndPackageUpload
 from test_group_endpoints.test_package_upload_parameter_types.test_package_upload_parameter_types import TestPackageUploadParameterTypes
 from test_group_endpoints.test_multiple_endpoints_and_files_transfer.test_multiple_endpoints_and_files_transfer import TestMultipleEndpointsAndFilesTransfer
@@ -32,6 +33,7 @@ class TestGroupEndpointsConfig(OrcraftTestGroupConfig):
 	)
 	tests = OrcraftConfigField.Tests(
 		default_factory=lambda: [
+			TestHelloEndpoint(),
 			TestDefaultEndpointAndPackageUpload(),
 			TestMultipleEndpointsAndFilesTransfer(),
 			TestMultiSelectEndpoints(),
