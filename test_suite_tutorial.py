@@ -44,7 +44,6 @@ class TestSuiteTutorial(OrcraftTestSuite):
 
 def main() -> None:
 	suite = TestSuiteTutorial()
-	# suite.log_info()
 	suite.run()
 
 
