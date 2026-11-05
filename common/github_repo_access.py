@@ -134,7 +134,13 @@ def download_github_release_binary(owner: str, repo: str, tag: str, dest_dir: st
 
 
 def fetch_maze_app_release_versions(filter_text: str = "") -> tuple[str, ...]:
-	return fetch_github_release_versions(MAZE_APP_OWNER, MAZE_APP_REPO, filter_text)
+	"""The maze app's versions: its repository's releases tagged ``maze-<version>``.
+
+	The repository also publishes releases that are not app versions, such as the
+	tutorial bundle; those carry no maze binary and stay out of the choices.
+	"""
+	versions = fetch_github_release_versions(MAZE_APP_OWNER, MAZE_APP_REPO, filter_text)
+	return tuple(v for v in versions if v.startswith("maze-"))
 
 
 def download_maze_app_release_binary(tag: str, dest_dir: str, force: bool = False) -> str:
